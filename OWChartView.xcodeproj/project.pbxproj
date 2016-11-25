@@ -15,6 +15,10 @@
 		F5E160D61DE7D40B007B831A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F5E160D41DE7D40B007B831A /* LaunchScreen.storyboard */; };
 		F5E160E11DE7D40B007B831A /* OWChartViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F5E160E01DE7D40B007B831A /* OWChartViewTests.m */; };
 		F5E160EC1DE7D40B007B831A /* OWChartViewUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = F5E160EB1DE7D40B007B831A /* OWChartViewUITests.m */; };
+		F5E160FC1DE7D9E6007B831A /* OWShowChartVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F5E160FA1DE7D9E6007B831A /* OWShowChartVC.m */; };
+		F5E160FD1DE7D9E6007B831A /* OWShowChartVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = F5E160FB1DE7D9E6007B831A /* OWShowChartVC.xib */; };
+		F5E161011DE7E3EC007B831A /* OWBarChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = F5E161001DE7E3EC007B831A /* OWBarChartView.m */; };
+		F5E161041DE810B1007B831A /* OWChartModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F5E161031DE810B1007B831A /* OWChartModel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +55,13 @@
 		F5E160E71DE7D40B007B831A /* OWChartViewUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OWChartViewUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5E160EB1DE7D40B007B831A /* OWChartViewUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OWChartViewUITests.m; sourceTree = "<group>"; };
 		F5E160ED1DE7D40B007B831A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F5E160F91DE7D9E6007B831A /* OWShowChartVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OWShowChartVC.h; sourceTree = "<group>"; };
+		F5E160FA1DE7D9E6007B831A /* OWShowChartVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OWShowChartVC.m; sourceTree = "<group>"; };
+		F5E160FB1DE7D9E6007B831A /* OWShowChartVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OWShowChartVC.xib; sourceTree = "<group>"; };
+		F5E160FF1DE7E3EC007B831A /* OWBarChartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OWBarChartView.h; sourceTree = "<group>"; };
+		F5E161001DE7E3EC007B831A /* OWBarChartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OWBarChartView.m; sourceTree = "<group>"; };
+		F5E161021DE810B1007B831A /* OWChartModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OWChartModel.h; sourceTree = "<group>"; };
+		F5E161031DE810B1007B831A /* OWChartModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OWChartModel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +92,7 @@
 		F5E160BA1DE7D40B007B831A = {
 			isa = PBXGroup;
 			children = (
+				F5E160FE1DE7E138007B831A /* OWChartViewTool */,
 				F5E160C51DE7D40B007B831A /* OWChartView */,
 				F5E160DF1DE7D40B007B831A /* OWChartViewTests */,
 				F5E160EA1DE7D40B007B831A /* OWChartViewUITests */,
@@ -106,6 +118,9 @@
 				F5E160CC1DE7D40B007B831A /* ViewController.h */,
 				F5E160CD1DE7D40B007B831A /* ViewController.m */,
 				F5E160CF1DE7D40B007B831A /* Main.storyboard */,
+				F5E160F91DE7D9E6007B831A /* OWShowChartVC.h */,
+				F5E160FA1DE7D9E6007B831A /* OWShowChartVC.m */,
+				F5E160FB1DE7D9E6007B831A /* OWShowChartVC.xib */,
 				F5E160D21DE7D40B007B831A /* Assets.xcassets */,
 				F5E160D41DE7D40B007B831A /* LaunchScreen.storyboard */,
 				F5E160D71DE7D40B007B831A /* Info.plist */,
@@ -138,6 +153,17 @@
 				F5E160ED1DE7D40B007B831A /* Info.plist */,
 			);
 			path = OWChartViewUITests;
+			sourceTree = "<group>";
+		};
+		F5E160FE1DE7E138007B831A /* OWChartViewTool */ = {
+			isa = PBXGroup;
+			children = (
+				F5E160FF1DE7E3EC007B831A /* OWBarChartView.h */,
+				F5E161001DE7E3EC007B831A /* OWBarChartView.m */,
+				F5E161021DE810B1007B831A /* OWChartModel.h */,
+				F5E161031DE810B1007B831A /* OWChartModel.m */,
+			);
+			path = OWChartViewTool;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -249,6 +275,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F5E160FD1DE7D9E6007B831A /* OWShowChartVC.xib in Resources */,
 				F5E160D61DE7D40B007B831A /* LaunchScreen.storyboard in Resources */,
 				F5E160D31DE7D40B007B831A /* Assets.xcassets in Resources */,
 				F5E160D11DE7D40B007B831A /* Main.storyboard in Resources */,
@@ -276,8 +303,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F5E160FC1DE7D9E6007B831A /* OWShowChartVC.m in Sources */,
 				F5E160CE1DE7D40B007B831A /* ViewController.m in Sources */,
+				F5E161011DE7E3EC007B831A /* OWBarChartView.m in Sources */,
 				F5E160CB1DE7D40B007B831A /* AppDelegate.m in Sources */,
+				F5E161041DE810B1007B831A /* OWChartModel.m in Sources */,
 				F5E160C81DE7D40B007B831A /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -516,6 +546,7 @@
 				F5E160F21DE7D40B007B831A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F5E160F31DE7D40B007B831A /* Build configuration list for PBXNativeTarget "OWChartViewTests" */ = {
 			isa = XCConfigurationList;
@@ -524,6 +555,7 @@
 				F5E160F51DE7D40B007B831A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F5E160F61DE7D40B007B831A /* Build configuration list for PBXNativeTarget "OWChartViewUITests" */ = {
 			isa = XCConfigurationList;
@@ -532,6 +564,7 @@
 				F5E160F81DE7D40B007B831A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
