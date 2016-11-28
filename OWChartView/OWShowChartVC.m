@@ -93,13 +93,13 @@
 {
     NSMutableDictionary *dataDic = [NSMutableDictionary dictionary];
     
-    NSArray *first_values = @[@(10),@(15),@(30),@(25),@(40)];
+    NSArray *first_values = @[@(20),@(15),@(30),@(25),@(40)];
     UIColor *firstColor = [UIColor redColor];
     NSMutableDictionary *first = [NSMutableDictionary dictionary];
     [first setObject:first_values forKey:@"values"];
     [first setObject:firstColor forKey:@"color"];
     
-    NSArray *second_values = @[@(0),@(20),@(25),@(40),@(60)];
+    NSArray *second_values = @[@(10),@(30),@(25),@(40),@(60)];
     UIColor *secondColor = [UIColor yellowColor];
     NSMutableDictionary *second = [NSMutableDictionary dictionary];
     [second setObject:second_values forKey:@"values"];
@@ -118,7 +118,7 @@
     [fourth setObject:fourthColor forKey:@"color"];
     
     NSArray *XArray = @[@"Monday", @"Tuesday", @"Wednesday", @"Thursday", @"Friday"];
-    NSArray *YArray = @[@(10),@(20),@(30),@(40),@(50),@(60),];
+    NSArray *YArray = @[@(5),@(10),@(15),@(20),@(25),@(30),@(35),@(40),@(45),@(50),@(55),@(60),];
     [dataDic setObject:first forKey:@"first"];
     [dataDic setObject:second forKey:@"second"];
 //    [dataDic setObject:third forKey:@"third"];
@@ -131,6 +131,11 @@
         _barChart = [[OWBarChartView alloc] initWithDataDictionary:dataDic];
         CGFloat chartHeight = 300.0;
         _barChart.frame = CGRectMake(0, (height - chartHeight)/2, width, chartHeight);
+        _barChart.structureType = ChartStructureType_Full;
+        _barChart.structureLineWidth = 0.5;
+        _barChart.asixWidth = 2.0;
+        _barChart.XAsixFont = [UIFont systemFontOfSize:12.0];
+        _barChart.YAsixFont = [UIFont systemFontOfSize:12.0];
         [self.view addSubview:_barChart];
     } else {
         

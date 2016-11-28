@@ -25,6 +25,9 @@ typedef NS_ENUM(NSInteger, ChartStructureType) {
 
 @property (nonatomic) ChartStructureType structureType;
 @property (nonatomic) CGFloat structureLineWidth;
+@property (nonatomic) CGFloat asixWidth;
+@property (nonatomic, strong) UIFont *YAsixFont;
+@property (nonatomic, strong) UIFont *XAsixFont;
 
 - (instancetype)initWithDataDictionary:(NSDictionary *)dataDictionary;
 - (instancetype)initWithFrame:(CGRect)frame DataDictionary:(NSDictionary *)dataDictionary;

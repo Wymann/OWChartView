@@ -14,6 +14,7 @@
 
 #define axisColor [UIColor darkGrayColor]
 #define axisWidth 2.0
+#define structureWidth 0.5
 #define scaleLabelFont [UIFont systemFontOfSize:12.0]
 
 @interface rectangleView()
@@ -65,6 +66,8 @@
 @property (nonatomic, strong) NSArray *XArray;
 @property (nonatomic, strong) NSArray *YArray;
 @property (nonatomic, strong) NSMutableArray *rectangleArr;
+@property (nonatomic, strong) NSMutableArray *YAsixLabelArr;
+@property (nonatomic, strong) NSMutableArray *XAsixLabelArr;
 
 @end
 
@@ -154,6 +157,9 @@
 
 - (void)setScaleLabel
 {
+    _YAsixLabelArr = [NSMutableArray array];
+    _XAsixLabelArr = [NSMutableArray array];
+    
     //X
     for (NSInteger i = 1; i <= _XArray.count; i++) {
         if (_XArray[i - 1]) {
@@ -169,6 +175,8 @@
             }
             label.textAlignment = NSTextAlignmentCenter;
             [self addSubview:label];
+            
+            [_XAsixLabelArr addObject:label];
         }
     }
     
@@ -180,6 +188,7 @@
     label.text = @"0";
     label.textAlignment = NSTextAlignmentRight;
     [self addSubview:label];
+    [_YAsixLabelArr addObject:label];
     
     for (NSInteger i = 1; i <= _YArray.count; i++) {
         if (_YArray[i - 1]) {
@@ -195,6 +204,8 @@
             }
             label.textAlignment = NSTextAlignmentRight;
             [self addSubview:label];
+            
+            [_YAsixLabelArr addObject:label];
         }
     }
 }
@@ -224,18 +235,34 @@
 -(void)setStructureType:(ChartStructureType)structureType
 {
     _structureType = structureType;
-    [self setStructure];
+//    [self setNeedsDisplay];
 }
 
 -(void)setStructureLineWidth:(CGFloat)structureLineWidth
 {
     _structureLineWidth = structureLineWidth;
-    [self setStructure];
+//    [self setNeedsDisplay];
 }
 
-- (void)setStructure
+-(void)setAsixWidth:(CGFloat)asixWidth
 {
-    
+    _asixWidth = asixWidth;
+}
+
+-(void)setYAsixFont:(UIFont *)YAsixFont
+{
+    _YAsixFont = YAsixFont;
+    for (UILabel *label in _YAsixLabelArr) {
+        label.font = _YAsixFont;
+    }
+}
+
+-(void)setXAsixFont:(UIFont *)XAsixFont
+{
+    _XAsixFont =XAsixFont;
+    for (UILabel *label in _XAsixLabelArr) {
+        label.font = _XAsixFont;
+    }
 }
 
 #pragma mark - show bar chart
@@ -256,22 +283,27 @@
     [axisPath moveToPoint:CGPointMake(40.0, 10.0)];
     [axisPath addLineToPoint:CGPointMake(40.0, self_height - 40.0)];
     [axisPath addLineToPoint:CGPointMake(self_width - 10.0, self_height - 40.0)];
-    axisPath.lineWidth = axisWidth;
+    if (_asixWidth <= 0) {
+        axisPath.lineWidth = axisWidth;
+    } else {
+        axisPath.lineWidth = _asixWidth;
+    }
     UIColor *strokeColor = axisColor;
     [strokeColor set];
     [axisPath stroke];
     
+    //Drawing arrows
     UIBezierPath *arrowPath1 = [UIBezierPath bezierPath];
-    [arrowPath1 moveToPoint:CGPointMake(30, 20.0)];
+    [arrowPath1 moveToPoint:CGPointMake(35, 15.0)];
     [arrowPath1 addLineToPoint:CGPointMake(40.0, 10.0)];
-    [arrowPath1 addLineToPoint:CGPointMake(50.0, 20.0)];
+    [arrowPath1 addLineToPoint:CGPointMake(45.0, 15.0)];
     arrowPath1.lineWidth = axisWidth;
     [arrowPath1 stroke];
     
     UIBezierPath *arrowPath2 = [UIBezierPath bezierPath];
-    [arrowPath2 moveToPoint:CGPointMake(self_width - 20.0, self_height - 30)];
+    [arrowPath2 moveToPoint:CGPointMake(self_width - 15.0, self_height - 35)];
     [arrowPath2 addLineToPoint:CGPointMake(self_width - 10.0, self_height - 40.0)];
-    [arrowPath2 addLineToPoint:CGPointMake(self_width - 20.0, self_height - 50.0)];
+    [arrowPath2 addLineToPoint:CGPointMake(self_width - 15.0, self_height - 45.0)];
     arrowPath2.lineWidth = axisWidth;
     [arrowPath2 stroke];
     
@@ -281,6 +313,24 @@
         [yscalePath addLineToPoint:CGPointMake(42.0, self_height - 40.0 - averageY * i)];
         yscalePath.lineWidth = axisWidth;
         [yscalePath stroke];
+        
+        if (_structureType >= 1) {
+            UIBezierPath *structurePath = [UIBezierPath bezierPath];
+            [structurePath moveToPoint:CGPointMake(40.0, self_height - 40.0 - averageY * i)];
+            [structurePath addLineToPoint:CGPointMake(self_width - 20.0, self_height - 40.0 - averageY * i)];
+            if (_structureType == 2) {
+                CGFloat dash[] = {1,1};
+                [structurePath setLineDash:dash count:2 phase:0];
+            }
+            if (_structureLineWidth <= 0) {
+                structurePath.lineWidth = structureWidth;
+            } else {
+                structurePath.lineWidth = _structureLineWidth;
+            }
+            UIColor *strokeColor = [UIColor lightGrayColor];
+            [strokeColor set];
+            [structurePath stroke];
+        }
     }
     
     for (NSInteger j = 1; j <= _XArray.count; j++) {
